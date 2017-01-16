@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/new_document_adapter_layout"
+    android:layout_marginBottom="10dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/directories_adapter_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#dedede"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/new_document_adapter_rute_name"
+                android:text="@string/ruteOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/new_document_adapter_rute"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/new_document_adapter_rute_name"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp" />
+
+            <Switch
+                android:id="@+id/new_document_adapter_active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/new_document_adapter_rute_end_name"
+                android:text="@string/ruteDestiny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_below="@+id/new_document_adapter_rute"/>
+
+            <EditText
+                android:id="@+id/new_document_adapter_rute_destiny"
+                android:textSize="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/new_document_adapter_rute_end_name"/>
+
+            <LinearLayout
+                android:id="@+id/new_document_buttons_layout"
+                android:orientation="horizontal"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/new_document_adapter_rute_destiny"
+                android:layout_marginTop="5dp"
+                android:layout_toStartOf="@+id/new_document_adapter_active">
+
+                <Button
+                    android:id="@+id/new_document_adapter_monday"
+                    android:text="@string/monday"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/days_of_week"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/new_document_adapter_tuesday"
+                    android:text="@string/tuesday"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/days_of_week"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/new_document_adapter_wednesday"
+                    android:text="@string/wednesday"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/days_of_week"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/new_document_adapter_thursday"
+                    android:text="@string/thursday"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/days_of_week"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/new_document_adapter_friday"
+                    android:text="@string/friday"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/days_of_week"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/new_document_adapter_saturday"
+                    android:text="@string/saturday"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/days_of_week"
+                    android:layout_marginRight="5dp"/>
+
+                <Button
+                    android:id="@+id/new_document_adapter_sunday"
+                    android:text="@string/sundey"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/days_of_week"
+                    android:layout_marginRight="5dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/new_document_adapter_cancel"
+                android:text="Cancelar"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/new_document_buttons_layout"
+                android:layout_toLeftOf="@+id/new_document_adapter_accept"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:id="@+id/new_document_adapter_accept"
+                android:text="Aceptar"
+                android:textColor="@color/colorAccent"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/new_document_buttons_layout"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

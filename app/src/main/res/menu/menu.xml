@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_documents"
+        android:enabled="true"
+        android:icon="@drawable/directory"
+        android:title="Documentos"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_prueba_uno"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_notification_overlay"
+        android:title="Prueba 2"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/menu_prueba_dos"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_notification_overlay"
+        android:title="Prueba 3"
+        app:showAsAction="ifRoom"/>
+</menu>

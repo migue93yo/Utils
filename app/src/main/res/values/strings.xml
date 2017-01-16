@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Utils</string>
+
+    <!--Documents adapter-->
+    <string name="insert_name">Introduzca nombre</string>Ruta
+    <string name="ruteOrigin">Ruta origen</string>
+    <string name="ruteDestiny">Ruta destino</string>
+
+    <!-- Days of weeks -->
+    <string name="monday">L</string>
+    <string name="tuesday">M</string>
+    <string name="wednesday">X</string>
+    <string name="thursday">J</string>
+    <string name="friday">V</string>
+    <string name="saturday">S</string>
+    <string name="sundey">D</string>
+
+</resources>
