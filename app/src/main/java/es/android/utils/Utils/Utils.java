@@ -27,14 +27,32 @@ import es.android.utils.domain.Directory;
 
 public class Utils {
 
-    public static List<File> findDirectories(File[] fileList){
-        List<File> list = new ArrayList<>();
-        for(File f : fileList){
-            if(f.isDirectory()){
-                list.add(f);
+    /**
+     * Devuelve los directorios de una lista de archivos pasados por parámetro
+     * @param file Archivo pasado por parámetro
+     * @return Directorios encontrados
+     */
+    public static List<File> findDirectories(File file){
+        boolean first = true;
+        List<File> listDirectories = null;
+        if(file != null) {
+            File[] fileList = file.listFiles();
+            listDirectories = new ArrayList<>();
+            for (File f : fileList) {
+                if (f.isDirectory()) {
+                    if(first){
+                        if (!file.getPath().equals(Environment.getExternalStorageDirectory().getPath())) {
+                            listDirectories.add(null);
+                        }
+                        first = false;
+                    }
+                    listDirectories.add(f);
+                }
             }
+
         }
-        return list;
+
+        return listDirectories;
     }
     
 }

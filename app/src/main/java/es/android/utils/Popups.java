@@ -22,6 +22,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.android.utils.Utils.Utils;
 import es.android.utils.adapters.DirectoryAdapter;
 import es.android.utils.adapters.SelectDirectoryAdapter;
 import es.android.utils.domain.Directory;
@@ -34,6 +35,7 @@ import es.android.utils.model.DirectoriesTable;
 public class Popups {
 
     private List<File> filesList;
+    private SelectDirectoryAdapter adapter;
 
     /**
      * Este método se encargará de abrir un popup con el layout popup_new_directory.
@@ -129,12 +131,13 @@ public class Popups {
                         if (!ruteDestiny.getText().toString().isEmpty()) {
 
                             doc.setRuteOrigin(ruteOrigin.getText().toString());
+                            doc.setRuteDestiny(ruteDestiny.getText().toString());
                             doc.setActive(active.isChecked());
 
                             DirectoriesTable directoriesTable = new DirectoriesTable(activity);
-                            if (directoriesTable.newDirectory(doc)) {
+                            if (directoriesTable.insert(doc)) {
                                 Toast.makeText(activity, "Se ha creado corréctamente", Toast.LENGTH_SHORT).show();
-                                List<Directory> listaDocumentos = directoriesTable.getAllDirectory();
+                                List<Directory> listaDocumentos = directoriesTable.getAllDirectories();
                                 recyclerView.setAdapter(new DirectoryAdapter(activity, listaDocumentos));
                                 popup.dismiss();
                             }
@@ -181,11 +184,11 @@ public class Popups {
             File internalRute = new File(Environment.getExternalStorageDirectory().getPath());
             internalRute.setReadable(true);
 
-            filesList = findDirectories(internalRute.listFiles());
+            filesList = Utils.findDirectories(internalRute);
 
-            final SelectDirectoryAdapter[] adapter = {new SelectDirectoryAdapter(filesList)};
+            adapter = new SelectDirectoryAdapter(filesList);
             final RecyclerView[] selectDirectoryRecycler = {(RecyclerView) view.findViewById(R.id.select_directory_recycler)};
-            selectDirectoryRecycler[0].setAdapter(adapter[0]);
+            selectDirectoryRecycler[0].setAdapter(adapter);
 
             final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(activity.getApplicationContext());
             selectDirectoryRecycler[0].setLayoutManager(mLayoutManager);
@@ -194,15 +197,15 @@ public class Popups {
             final PopupWindow pw = new PopupWindow(view, ancho - 50, alto/2, true);
             pw.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-            adapter[0].setOnItemClickListener(new SelectDirectoryAdapter.OnItemClickListener() {
+            adapter.setOnItemClickListener(new SelectDirectoryAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(View view, int position) {
-                    List<File> subListFiles = findDirectories(filesList.get(position).listFiles());
-                    if(!subListFiles.isEmpty()){
+                    List<File> subListFiles = Utils.findDirectories(filesList.get(position));
+                    if(view.getId() == R.id.select_directory_right_icon){
                         filesList = subListFiles;
-                        adapter[0] = new SelectDirectoryAdapter(filesList);
-                        selectDirectoryRecycler[0].setAdapter(adapter[0]);
-                        adapter[0].setOnItemClickListener(this);
+                        adapter = new SelectDirectoryAdapter(filesList);
+                        selectDirectoryRecycler[0].setAdapter(adapter);
+                        adapter.setOnItemClickListener(this);
                     }else{
                         rute.setText(filesList.get(position).getName());
                         pw.dismiss();
@@ -212,21 +215,6 @@ public class Popups {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Devuelve los directorios de una lista de archivos pasados por parámetro
-     * @param fileList Lista de archivos
-     * @return Directorios encontrados
-     */
-    private List<File> findDirectories(File[] fileList){
-        List<File> list = new ArrayList<>();
-        for(File f : fileList){
-            if(f.isDirectory()){
-                list.add(f);
-            }
-        }
-        return list;
     }
 
     /**

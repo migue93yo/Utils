@@ -27,7 +27,7 @@ public class DirectoriesFragment extends Fragment {
 
         //Localizamos nuestras copias de seguridad y las insertamos en el RecyclerView
         DirectoriesTable directoriesTable = new DirectoriesTable(getContext());
-        List<Directory> directoriesList = directoriesTable.getAllDirectory();
+        List<Directory> directoriesList = directoriesTable.getAllDirectories();
 
         recyclerView = (RecyclerView) view.findViewById(R.id.documents_recycler);
         recyclerView.setAdapter(new DirectoryAdapter(getActivity(), directoriesList));

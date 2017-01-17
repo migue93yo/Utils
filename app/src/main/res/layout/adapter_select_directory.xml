@@ -5,7 +5,7 @@
     android:id="@+id/adapter_select_directory_layout">
 
     <ImageView
-        android:id="@+id/select_directory_imagen"
+        android:id="@+id/select_directory_left_icon"
         android:background="@drawable/directory"
         android:layout_width="35dp"
         android:layout_height="35dp"
@@ -15,18 +15,26 @@
         android:id="@+id/select_directory_rute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/select_directory_imagen"
-        android:layout_alignBottom="@+id/select_directory_imagen"
-        android:layout_toEndOf="@+id/select_directory_imagen"
-        android:gravity="center"/>
+        android:layout_alignTop="@+id/select_directory_left_icon"
+        android:layout_alignBottom="@+id/select_directory_left_icon"
+        android:gravity="center"
+        android:layout_toEndOf="@+id/select_directory_left_icon" />
 
     <View
-        android:id="@+id/setting_employee_separator1"
+        android:id="@+id/select_directory_separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#cfcfcfcf"
-        android:layout_below="@+id/select_directory_imagen"
+        android:layout_below="@+id/select_directory_left_icon"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"/>
+
+    <ImageView
+        android:id="@+id/select_directory_right_icon"
+        android:background="@drawable/arrow_right"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

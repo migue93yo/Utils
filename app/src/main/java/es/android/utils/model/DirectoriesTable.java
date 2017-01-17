@@ -27,7 +27,7 @@ public class DirectoriesTable {
         this.context = context;
     }
 
-    public boolean newDirectory(Directory directory){
+    public boolean insert(Directory directory){
         ContentValues values = new ContentValues();
         values.put(TablesDataSource.DOCUMENTS_RUTE_ORIGIN, directory.getRuteOrigin());
         values.put(TablesDataSource.DOCUMENTS_RUTE_DESTINY, directory.getRuteDestiny());
@@ -42,7 +42,7 @@ public class DirectoriesTable {
         return database.insert(TablesDataSource.TABLE_DOCUMENTS_NAME, null, values) > 0;
     }
 
-    public boolean updateDirectory(Directory directory){
+    public boolean update(Directory directory){
         ContentValues values = new ContentValues();
         values.put(TablesDataSource.DOCUMENTS_RUTE_ORIGIN, directory.getRuteOrigin());
         values.put(TablesDataSource.DOCUMENTS_RUTE_DESTINY, directory.getRuteDestiny());
@@ -57,7 +57,7 @@ public class DirectoriesTable {
         return database.update(TablesDataSource.TABLE_DOCUMENTS_NAME, values, TablesDataSource.DOCUMENTS_ID + "=" + String.valueOf(directory.getId()), null) > 0;
     }
 
-    public List<Directory> getAllDirectory(){
+    public List<Directory> getAllDirectories(){
         DaysOfWeekTable dowTable = new DaysOfWeekTable(context);
         List<Directory> directoryList = new ArrayList<>();
         Cursor c = database.rawQuery("SELECT * FROM " + TablesDataSource.TABLE_DOCUMENTS_NAME, null);

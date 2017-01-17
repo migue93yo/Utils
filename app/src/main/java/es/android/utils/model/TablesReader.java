@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class TablesReader extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "Utils.db";
+    private static final String DATABASE_NAME = "UtilsBD.db";
     private static final int DATABASE_VERSION = 1;
 
     public TablesReader(Context context) {

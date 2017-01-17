@@ -1,6 +1,9 @@
 package es.android.utils.adapters;
 
 import android.app.Activity;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -48,6 +51,7 @@ public class DirectoryAdapter
 
         private EditText ruteOrigin;
         private EditText ruteDestiny;
+        private ImageView arrowRight;
         private Switch active;
         private Button[] daysOfWeek = new Button[7];
 
@@ -59,10 +63,11 @@ public class DirectoryAdapter
         public ChooseDirectoryViewHolder(final View itemView) {
             super(itemView);
 
-            ruteOrigin = (EditText) itemView.findViewById(R.id.directories_adapter_rute_origin);
-            ruteDestiny = (EditText) itemView.findViewById(R.id.directories_adapter_rute_end);
             active = (Switch) itemView.findViewById(R.id.directories_adapter_active);
             desploy = (ImageView) itemView.findViewById(R.id.directories_adapter_desploy);
+            arrowRight = (ImageView) itemView.findViewById(R.id.select_directory_right_icon);
+            ruteOrigin = (EditText) itemView.findViewById(R.id.directories_adapter_rute_origin);
+            ruteDestiny = (EditText) itemView.findViewById(R.id.directories_adapter_rute_end);
             accept = (TextView) itemView.findViewById(R.id.directories_adapter_accept);
             cancel = (TextView) itemView.findViewById(R.id.directories_adapter_cancel);
 
@@ -83,6 +88,7 @@ public class DirectoryAdapter
         final Directory dir = directoriesList.get(position);
 
         holder.ruteOrigin.setText(dir.getRuteOrigin());
+        holder.ruteDestiny.setText(dir.getRuteDestiny());
         holder.ruteDestiny.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -116,10 +122,10 @@ public class DirectoryAdapter
                     dir.setActive(holder.active.isChecked());
 
                     DirectoriesTable directoriesTable = new DirectoriesTable(activity);
-                    boolean b = directoriesTable.updateDirectory(dir);
+                    boolean b = directoriesTable.update(dir);
                     Toast.makeText(activity, String.valueOf(b), Toast.LENGTH_SHORT).show();
                     if (b) {
-                        List<Directory> listaDocumentos = directoriesTable.getAllDirectory();
+                        List<Directory> listaDocumentos = directoriesTable.getAllDirectories();
                         RecyclerView recyclerView = (RecyclerView) activity.findViewById(R.id.documents_recycler);
                         recyclerView.setAdapter(new DirectoryAdapter(activity, listaDocumentos));
                         toUndesployButtons(holder);
